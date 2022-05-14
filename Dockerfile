@@ -1,17 +1,17 @@
 FROM node:12
 
-# создание директории приложения
+# create application directory
 WORKDIR /usr/src/app
 
-# установка зависимостей
-# символ астериск ("*") используется для того чтобы по возможности
-# скопировать оба файла: package.json и package-lock.json
+# install dependencies
+# the asterisk character ("*") is used to
+# copy both files: package.json and package-lock.json
 COPY package*.json ./
 
 RUN npm install
-# Если вы создаете сборку для продакшн
+# If you are building for production
 # RUN npm ci --only=production
 
-# копируем исходный код
+# copy source code
 COPY . .
 CMD [ "node", "counter.js" ]
